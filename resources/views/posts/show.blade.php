@@ -5,7 +5,8 @@
     <h1>{{$post->title}}</h1>
     
     <div>
-        {{$post->body}}
+        {!!$post->body!!}
+        <!-- using exclamanation marks to parse the <p>html script</p> in 'Source' in Editor --> 
     </div>
     <hr>
     <small>Written on {{$post->created_at}}</small>
