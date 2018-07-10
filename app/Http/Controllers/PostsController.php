@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
-//bringing in the model
+//bringing in the post model
 
 use DB;
 // using just SQL queries, bring in DB library
@@ -57,7 +57,21 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required'
+            /* to make sure these fields are filled */
+        ]);
+
+        // to create Post
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->save();
+        // saving the inputs
+
+        return redirect('/posts')->with('success', 'Posts Created');
+        // return with 'success' message and showing own custom message -> 'Posts Created'
     }
 
     /**
