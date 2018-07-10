@@ -21,8 +21,9 @@
             
                 {{Form::label('body', 'Body')}}
 
-                {{Form::textarea('body', '', ['class' => 'form-control', 'placeholder' => 'Body Text'])}}
+                {{Form::textarea('body', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Body Text'])}}
                 <!-- Body-->
+                <!-- Added 'id' => 'ckeditor' into array to enable editor in body-->
         </div>
 
         {{Form::submit('Submit', ['class' =>'btn btn-primary'])}}

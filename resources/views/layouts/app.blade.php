@@ -1,3 +1,5 @@
+<!-- installed laravel blade extension, so no need to keep using html template-->
+
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
@@ -20,7 +22,16 @@
             @yield('content')
 
         </div>
+        
+        <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 
-        <!-- installed laravel blade extension, so no need to keep using html template-->
+        <script>
+            
+            CKEDITOR.replace( 'article-ckeditor' );
+
+        </script>
+        <!-- codes to use laravel-ckeditor after installing package -->
+
+        
     </body>
 </html>
