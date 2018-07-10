@@ -13,8 +13,11 @@
     </head>
     <body>
         @include('inc.navbar')
+
         <div class="container">
-        @yield('content')
+
+            @include('inc.messages') <!-- to link it to our messages.blade file -->
+            @yield('content')
 
         </div>
 
