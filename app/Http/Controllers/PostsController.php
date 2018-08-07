@@ -67,6 +67,8 @@ class PostsController extends Controller
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->user_id = auth()->user()->id;
+        // not request cause not from form, but an authentication
         $post->save();
         // saving the inputs
 

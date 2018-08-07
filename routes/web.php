@@ -48,3 +48,14 @@ Route::get('/services', 'PagesController@services');
 Route::resource('posts', 'PostsController');
 //automatically map routes to those function
     
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index');
