@@ -8,8 +8,8 @@
         @foreach($posts as $post)
             <div class="well">
                 <h3><a href="/posts/{{$post->id}}">{{$post->title}}</a></h3>
-                <small>Written on {{$post->created_at}}</small>
-                <!-- churn date -->
+                <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
+                <!-- churn date and written by specific user -->
             </div>
         @endforeach
             {{$posts->links()}}
