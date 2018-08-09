@@ -11,7 +11,18 @@ use DB;
 // using just SQL queries, bring in DB library
 
 class PostsController extends Controller
-{
+{    
+    /**
+    * Create a new controller instance.
+    *
+    * @return void
+    */
+   public function __construct()
+   {
+       $this->middleware('auth', ['except' => ['index', 'show']]);
+   }
+   /** copied from DashboardController. function requires auth to create post, 'except' for the following pages */
+
     /**
      * Display a listing of the resource.
      *
@@ -98,6 +109,12 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+
+        // Check for correct user
+        if(auth()->user()->id !==$post->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+            // if not correct user id, redirect with error message
+        }
         return view('posts.edit')->with('post', $post);
     }
 
@@ -136,6 +153,13 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+
+        // Check for correct user
+        if(auth()->user()->id !==$post->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized Page');
+            // if not correct user id, redirect with error message
+            }
+            
         $post->delete();
         return redirect('/posts')->with('success', 'Post Deleted');
     }
